@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test
 import utils.countVowelsAndConsonants
 import utils.findLargestNumber
 import utils.isPalindrome
+import utils.mostFrequentElement
 
 
 @Nested
@@ -193,3 +194,71 @@ class isPalindromeTest {
     }
 }
 
+@Nested
+class FrequencyCounterTest {
+
+    @Test
+    fun `should return null for an empty list`() {
+        val input = listOf<String>()
+        val result = mostFrequentElement(input)
+        assertNull(result)
+    }
+
+    @Test
+    fun `should return the only element for a single-element list`() {
+        val input = listOf("apple")
+        val result = mostFrequentElement(input)
+        assertEquals("apple", result)
+    }
+
+    @Test
+    fun `should return the most frequent element when there is a clear winner`() {
+        val input = listOf("apple", "banana", "apple", "orange", "banana", "apple")
+        val result = mostFrequentElement(input)
+        assertEquals("apple", result)
+    }
+
+    @Test
+    fun `should return the first element in case of a tie`() {
+        val input = listOf("apple", "banana", "apple", "banana")
+        val result = mostFrequentElement(input)
+        assertEquals("apple", result)
+    }
+
+    @Test
+    fun `should return the first element when all elements are unique`() {
+        val input = listOf("a", "b", "c", "d")
+        val result = mostFrequentElement(input)
+        assertEquals("a", result)
+    }
+
+    @Test
+    fun `should treat strings with different cases as distinct elements`() {
+        val input = listOf("Apple", "apple", "APPLE")
+        val result = mostFrequentElement(input)
+        assertEquals("Apple", result)
+    }
+
+    @Test
+    fun `should return the correct element even with empty strings in the list`() {
+        val input = listOf("apple", "banana", "", "apple")
+        val result = mostFrequentElement(input)
+        assertEquals("apple", result)
+    }
+
+    @Test
+    fun `should return the correct result for a large list`() {
+        val input = MutableList(1000) { "item${it % 10}" }
+        input.add("item0") // make "item0" most frequent
+        val result = mostFrequentElement(input)
+        assertEquals("item0", result)
+    }
+
+    @Test
+    fun `should return the first occurring element when multiple elements have the same highest frequency`() {
+        val input = listOf("cat", "dog", "cat", "dog", "bird")
+        val result = mostFrequentElement(input)
+        assertEquals("cat", result)
+    }
+
+}

@@ -17,6 +17,7 @@ import ui.VowelsConsonantsScreen
 import ui.*
 import androidx.compose.material.icons.filled.FormatListNumbered
 import androidx.compose.material.icons.filled.Abc
+import androidx.compose.material.icons.filled.Equalizer
 import androidx.compose.ui.graphics.Color
 
 
@@ -77,6 +78,22 @@ fun App() {
                         }
                     }
 
+                    Spacer(modifier = Modifier.width(width = 16.dp))
+
+
+                    IconButton(onClick = { selectedMenuItem = MenuItem.FrequentString }) {
+                        Row() {
+                            Icon(
+                                imageVector = Icons.Filled.Equalizer,
+                                contentDescription = "Frequency"
+                            )
+                            Spacer(modifier = Modifier.width(width = 4.dp))
+                            Text("Frequency",
+                                color = Color.White,
+                                modifier = Modifier.padding(top = 2.dp))
+                        }
+                    }
+
                 }
             )
         },
@@ -85,6 +102,7 @@ fun App() {
                 MenuItem.Numbers -> LargestNumScreen()
                 MenuItem.Vowels -> VowelsConsonantsScreen()
                 MenuItem.Palindrome -> PalindromeScreen()
+                MenuItem.FrequentString -> FrequencyCounterScreen()
                 else -> LargestNumScreen()
             }
         }

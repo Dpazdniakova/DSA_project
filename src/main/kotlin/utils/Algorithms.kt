@@ -62,3 +62,37 @@ fun isPalindrome(input: String): Boolean {
 
     return true
 }
+
+fun mostFrequentElement(inputList: List<String>): String? {
+
+    if (inputList.isEmpty()) {
+        return null
+    }
+    if (inputList.size == 1) {
+        return inputList[0]
+    }
+
+    val frequencyMap = mutableMapOf<String, Int>()
+
+    for (item in inputList) {
+        if (frequencyMap.containsKey(item)) {
+            frequencyMap[item] = frequencyMap[item]!! + 1
+        } else {
+            frequencyMap[item] = 1
+        }
+    }
+    var maxFrequency = 0
+    var mostFrequentItem: String? = null
+
+
+    // return the first found most frequent item
+    for (item in inputList) {
+            val freq = frequencyMap[item] ?: 0
+            if (freq > maxFrequency) {
+                maxFrequency = freq
+                mostFrequentItem = item
+            }
+    }
+    return mostFrequentItem
+}
+
