@@ -1,5 +1,5 @@
 package ui
 
 enum class MenuItem {
-    Numbers, Vowels, Palindrome
+    Numbers, Vowels, Palindrome,FrequentString
 }
