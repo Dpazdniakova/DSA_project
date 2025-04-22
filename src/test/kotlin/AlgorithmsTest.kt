@@ -1,10 +1,9 @@
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import utils.countVowelsAndConsonants
 import utils.findLargestNumber
-
+import utils.isPalindrome
 
 
 @Nested
@@ -149,5 +148,48 @@ class FindLargestNumberTest {
         assertEquals(Int.MAX_VALUE, result, "Expected Int.MAX_VALUE as the largest number")
     }
 
+}
+
+@Nested
+class isPalindromeTest {
+
+    @Test
+    fun `basic palindrome cases`() {
+        assertTrue(isPalindrome("level"))
+        assertTrue(isPalindrome("madam"))
+        assertTrue(isPalindrome("racecar"))
+        assertTrue(isPalindrome("abba"))
+    }
+
+    @Test
+    fun `palindromes with mixed case`() {
+        assertTrue(isPalindrome("Level"))
+        assertTrue(isPalindrome("MadAm"))
+        assertTrue(isPalindrome("RaceCar"))
+    }
+
+    @Test
+    fun `palindromes with spaces and punctuation`() {
+        assertTrue(isPalindrome("A man, a plan, a canal, Panama"))
+        assertTrue(isPalindrome("No 'x' in Nixon"))
+        assertTrue(isPalindrome("Was it a car or a cat I saw?"))
+    }
+
+    @Test
+    fun `non-palindrome inputs`() {
+        assertFalse(isPalindrome("hello"))
+        assertFalse(isPalindrome("Palindrome"))
+        assertFalse(isPalindrome("This is not a palindrome"))
+    }
+
+    @Test
+    fun `edge cases`() {
+        assertTrue(isPalindrome(""))
+        assertTrue(isPalindrome(" "))
+        assertTrue(isPalindrome(",.!"))
+        assertTrue(isPalindrome("a"))
+        assertTrue(isPalindrome("12321"))
+        assertFalse(isPalindrome("12345"))
+    }
 }
 
