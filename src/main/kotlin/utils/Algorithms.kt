@@ -31,3 +31,34 @@ fun countVowelsAndConsonants(input: String): Pair<Int, Int> {
 
     return Pair(vowels, consonants)
 }
+
+fun isPalindrome(input: String): Boolean {
+
+    var cleaned = ""
+    for (char in input) {
+        if (char.isLetterOrDigit()) {
+            cleaned += char.lowercaseChar()
+        }
+    }
+    val length = cleaned.length
+    if (length <= 1) return true
+
+    val stack = ArrayDeque<Char>()
+    val midpoint = length / 2
+
+
+    for (i in 0 until midpoint) {
+        stack.addLast(cleaned[i])
+    }
+
+    val startIndex = if (length % 2 == 0) midpoint else midpoint + 1
+
+    for (i in startIndex until length) {
+        val top = stack.removeLast() // acts as pop
+        if (top != cleaned[i]) {
+            return false
+        }
+    }
+
+    return true
+}

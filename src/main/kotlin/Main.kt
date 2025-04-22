@@ -62,6 +62,21 @@ fun App() {
                         }
                     }
                     Spacer(modifier = Modifier.width(width = 16.dp))
+
+
+                    IconButton(onClick = { selectedMenuItem = MenuItem.Palindrome }) {
+                        Row() {
+                            Icon(
+                                imageVector = Icons.Filled.Abc,
+                                contentDescription = "Palindrome"
+                            )
+                            Spacer(modifier = Modifier.width(width = 4.dp))
+                            Text("Palindrome",
+                                color = Color.White,
+                                modifier = Modifier.padding(top = 2.dp))
+                        }
+                    }
+
                 }
             )
         },
@@ -69,6 +84,7 @@ fun App() {
             when (selectedMenuItem) {
                 MenuItem.Numbers -> LargestNumScreen()
                 MenuItem.Vowels -> VowelsConsonantsScreen()
+                MenuItem.Palindrome -> PalindromeScreen()
                 else -> LargestNumScreen()
             }
         }
