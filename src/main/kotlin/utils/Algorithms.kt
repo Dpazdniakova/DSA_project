@@ -19,3 +19,15 @@ fun findLargestNumber(inputList: List<Int>): Int? {
         return max
 
 }
+fun countVowelsAndConsonants(input: String): Pair<Int, Int> {
+    var vowels = 0
+    var consonants = 0
+    val vowelsList = "aeiou"
+
+    for (char in input.lowercase())
+        when {
+            char.isLetter() && char in vowelsList  -> vowels++
+            char.isLetter() && char !in vowelsList -> consonants++ }
+
+    return Pair(vowels, consonants)
+}

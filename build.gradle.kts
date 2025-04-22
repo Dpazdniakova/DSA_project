@@ -25,6 +25,9 @@ dependencies {
     // JUnit 5 for testing
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+    implementation("org.jetbrains.compose.material3:material3:1.5.1")
+    implementation("androidx.compose.material:material-icons-extended:1.7.8")
+
 }
 
 compose.desktop {
