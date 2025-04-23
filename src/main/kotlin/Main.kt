@@ -32,7 +32,7 @@ fun App() {
             TopAppBar(
                 title = {
                     Text(text = "Menu",
-                        style = MaterialTheme.typography.headlineMedium,
+                        style = MaterialTheme.typography.headlineSmall,
                         color = Color.White
                     ) },
                 actions = {
@@ -80,7 +80,6 @@ fun App() {
 
                     Spacer(modifier = Modifier.width(width = 16.dp))
 
-
                     IconButton(onClick = { selectedMenuItem = MenuItem.FrequentString }) {
                         Row() {
                             Icon(
@@ -94,6 +93,21 @@ fun App() {
                         }
                     }
 
+                    Spacer(modifier = Modifier.width(width = 16.dp))
+
+                    IconButton(onClick = { selectedMenuItem = MenuItem.countOccurrences }) {
+                        Row() {
+                            Icon(
+                                imageVector = Icons.Filled.Equalizer,
+                                contentDescription = "Frequency"
+                            )
+                            Spacer(modifier = Modifier.width(width = 4.dp))
+                            Text("Needle in Haystack",
+                                color = Color.White,
+                                modifier = Modifier.padding(top = 2.dp))
+                        }
+                    }
+                    Spacer(modifier = Modifier.width(width = 16.dp))
                 }
             )
         },
@@ -103,6 +117,7 @@ fun App() {
                 MenuItem.Vowels -> VowelsConsonantsScreen()
                 MenuItem.Palindrome -> PalindromeScreen()
                 MenuItem.FrequentString -> FrequencyCounterScreen()
+                MenuItem.countOccurrences -> countOccurrencesScreen()
                 else -> LargestNumScreen()
             }
         }

@@ -323,6 +323,15 @@ class NeedleCounterTest {
         assertEquals(0, result)
     }
 
+    @Test
+    fun `should count occurrences correctly even when haystack and needle contain spaces`() {
+        val haystack = "   111   "
+        val needle = " 1 "
+        val result = countOccurrences(haystack.trim(), needle.trim())
+        assertEquals(3, result)
+    }
+
+
 }
 
 
