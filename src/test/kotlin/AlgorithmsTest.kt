@@ -9,7 +9,7 @@ class VowelsConsonantsTest {
     @Test
     fun `should count vowels and consonants in a regular word`() {
         val input = "hello"
-        val expected = Pair(2, 3) // 2 vowels (e, o), 3 consonants (h, l, l)
+        val expected = Pair(2, 3)
         val result = countVowelsAndConsonants(input)
         assertEquals(expected, result, "The count of vowels and consonants should match")
     }
@@ -17,7 +17,7 @@ class VowelsConsonantsTest {
     @Test
     fun `should handle an empty string`() {
         val input = ""
-        val expected = Pair(0, 0) // No vowels or consonants
+        val expected = Pair(0, 0)
         val result = countVowelsAndConsonants(input)
         assertEquals(expected, result, "An empty string should return (0, 0)")
     }
@@ -25,7 +25,7 @@ class VowelsConsonantsTest {
     @Test
     fun `should count vowels and consonants in a single vowel`() {
         val input = "a"
-        val expected = Pair(1, 0) // 1 vowel, 0 consonants
+        val expected = Pair(1, 0)
         val result = countVowelsAndConsonants(input)
         assertEquals(expected, result, "A single vowel should return (1, 0)")
     }
@@ -33,7 +33,7 @@ class VowelsConsonantsTest {
     @Test
     fun `should count vowels and consonants in a single consonant`() {
         val input = "z"
-        val expected = Pair(0, 1) // 0 vowels, 1 consonant
+        val expected = Pair(0, 1)
         val result = countVowelsAndConsonants(input)
         assertEquals(expected, result, "A single consonant should return (0, 1)")
     }
@@ -41,7 +41,7 @@ class VowelsConsonantsTest {
     @Test
     fun `should handle mixed case input`() {
         val input = "HElloWOrld"
-        val expected = Pair(3, 7) // 3 vowels (e, o, o), 7 consonants (H, l, l, W, r, l, d)
+        val expected = Pair(3, 7)
         val result = countVowelsAndConsonants(input)
         assertEquals(expected, result, "The function should handle mixed case correctly")
     }
@@ -49,7 +49,7 @@ class VowelsConsonantsTest {
     @Test
     fun `should ignore non-alphabetic characters`() {
         val input = "h3llo w@rld!"
-        val expected = Pair(1, 7) // 1 vowel (o), 7 consonants (h, l, l, w, r, l, d)
+        val expected = Pair(1, 7)
         val result = countVowelsAndConsonants(input)
         assertEquals(expected, result, "Non-alphabetic characters should be ignored")
     }
@@ -57,7 +57,7 @@ class VowelsConsonantsTest {
     @Test
     fun `should handle input with only vowels`() {
         val input = "aeiouAEIOU"
-        val expected = Pair(10, 0) // 10 vowels, 0 consonants
+        val expected = Pair(10, 0)
         val result = countVowelsAndConsonants(input)
         assertEquals(expected, result, "All vowels should be counted correctly")
     }
@@ -65,7 +65,7 @@ class VowelsConsonantsTest {
     @Test
     fun `should handle input with only consonants`() {
         val input = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"
-        val expected = Pair(0, 42) // 0 vowels, 42 consonants
+        val expected = Pair(0, 42)
         val result = countVowelsAndConsonants(input)
         assertEquals(expected, result, "All consonants should be counted correctly")
     }
@@ -73,7 +73,7 @@ class VowelsConsonantsTest {
     @Test
     fun `should handle input with spaces and special characters`() {
         val input = "The quick brown fox jumps over the lazy dog!"
-        val expected = Pair(11, 24) // 11 vowels, 24 consonants
+        val expected = Pair(11, 24)
         val result = countVowelsAndConsonants(input)
         assertEquals(expected, result, "Spaces and special characters should not be counted")
     }
@@ -246,7 +246,7 @@ class FrequencyCounterTest {
     @Test
     fun `should return the correct result for a large list`() {
         val input = MutableList(1000) { "item${it % 10}" }
-        input.add("item0") // make "item0" most frequent
+        input.add("item0")
         val result = mostFrequentElement(input)
         assertEquals("item0", result)
     }
@@ -296,7 +296,7 @@ class NeedleCounterTest {
     @Test
     fun `should count only non-overlapping matches when occurrences overlap`() {
         val result = countOccurrences("aaaaa", "aa")
-        assertEquals(2, result) // Matches at index 0 and 2
+        assertEquals(2, result)
     }
 
     @Test
@@ -329,6 +329,14 @@ class NeedleCounterTest {
         val needle = " 1 "
         val result = countOccurrences(haystack.trim(), needle.trim())
         assertEquals(3, result)
+    }
+
+    @Test
+    fun `should count occurrences correctly when they're symbols`() {
+        val haystack = "!!!!"
+        val needle = "! "
+        val result = countOccurrences(haystack.trim(), needle.trim())
+        assertEquals(4, result)
     }
 
 
