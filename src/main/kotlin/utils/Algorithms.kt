@@ -1,13 +1,11 @@
 package utils
 
 fun findLargestNumber(inputList: List<Int>): Int? {
-        // Edge case: If the list is empty, return null
+
         if (inputList.isEmpty()) return null
 
-        // Initialize max with the first element of the list
         var max = inputList[0]
 
-        // Iterate through the list starting from the second element
         for (i in 1 until inputList.size) {
             val current = inputList[i]
             if (current > max) {
@@ -15,7 +13,6 @@ fun findLargestNumber(inputList: List<Int>): Int? {
             }
         }
 
-        // Return the largest number found
         return max
 
 }
@@ -94,5 +91,29 @@ fun mostFrequentElement(inputList: List<String>): String? {
             }
     }
     return mostFrequentItem
+}
+
+fun countOccurrences(haystack: String, needle: String): Int {
+
+    if (needle.isEmpty() || haystack.length < needle.length) {
+        return 0
+    }
+
+    val lowerHaystack = haystack.lowercase()
+    val lowerNeedle = needle.lowercase()
+
+    var count = 0
+    var currentIndex = 0
+
+    while (currentIndex <= lowerHaystack.length - lowerNeedle.length) {
+        if (lowerHaystack.substring(currentIndex, currentIndex + lowerNeedle.length) == lowerNeedle) {
+            count++
+            currentIndex += lowerNeedle.length  // Skip forward by full match length for non-overlapping
+        } else {
+            currentIndex++
+        }
+    }
+
+    return count
 }
 

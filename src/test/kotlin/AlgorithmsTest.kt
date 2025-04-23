@@ -1,10 +1,7 @@
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
-import utils.countVowelsAndConsonants
-import utils.findLargestNumber
-import utils.isPalindrome
-import utils.mostFrequentElement
+import utils.*
 
 
 @Nested
@@ -152,7 +149,7 @@ class FindLargestNumberTest {
 }
 
 @Nested
-class isPalindromeTest {
+class IsPalindromeTest {
 
     @Test
     fun `basic palindrome cases`() {
@@ -262,3 +259,79 @@ class FrequencyCounterTest {
     }
 
 }
+
+@Nested
+class NeedleCounterTest {
+
+    @Test
+    fun `should return the correct number of non-overlapping matches for a basic input`() {
+        val result = countOccurrences("banana", "na")
+        assertEquals(2, result)
+    }
+
+    @Test
+    fun `should return zero when the needle is an empty string`() {
+        val result = countOccurrences("banana", "")
+        assertEquals(0, result)
+    }
+
+    @Test
+    fun `should return zero when the haystack is shorter than the needle`() {
+        val result = countOccurrences("ba", "banana")
+        assertEquals(0, result)
+    }
+
+    @Test
+    fun `should return the correct count when the haystack and needle differ in case`() {
+        val result = countOccurrences("BANANA", "na")
+        assertEquals(2, result)
+    }
+
+    @Test
+    fun `should return zero when the needle does not exist in the haystack`() {
+        val result = countOccurrences("banana", "xy")
+        assertEquals(0, result)
+    }
+
+    @Test
+    fun `should count only non-overlapping matches when occurrences overlap`() {
+        val result = countOccurrences("aaaaa", "aa")
+        assertEquals(2, result) // Matches at index 0 and 2
+    }
+
+    @Test
+    fun `should return one when the needle is the same as the haystack`() {
+        val result = countOccurrences("abc", "abc")
+        assertEquals(1, result)
+    }
+
+    @Test
+    fun `should return the correct number of non-overlapping matches when the pattern appears multiple times`() {
+        val result = countOccurrences("abcabcabc", "abc")
+        assertEquals(3, result)
+    }
+
+    @Test
+    fun `should return zero when the haystack is empty`() {
+        val result = countOccurrences("", "a")
+        assertEquals(0, result)
+    }
+
+    @Test
+    fun `should return zero when both haystack and needle are empty`() {
+        val result = countOccurrences("", "")
+        assertEquals(0, result)
+    }
+
+    @Test
+    fun `should count occurrences correctly even when haystack and needle contain spaces`() {
+        val haystack = "   111   "
+        val needle = " 1 "
+        val result = countOccurrences(haystack.trim(), needle.trim())
+        assertEquals(3, result)
+    }
+
+
+}
+
+
