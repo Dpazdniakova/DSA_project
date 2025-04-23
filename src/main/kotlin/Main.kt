@@ -1,10 +1,7 @@
 import androidx.compose.desktop.ui.tooling.preview.Preview
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.*
-import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.material3.MaterialTheme
 import ui.VowelsConsonantsScreen
 import ui.*
+import ui.components.MenuButton
 import androidx.compose.material.icons.filled.FormatListNumbered
 import androidx.compose.material.icons.filled.Abc
 import androidx.compose.material.icons.filled.Equalizer
@@ -36,77 +34,15 @@ fun App() {
                         color = Color.White
                     ) },
                 actions = {
-                    IconButton(onClick = { selectedMenuItem = MenuItem.Numbers }) {
-                        Row() {
-                            Icon(
-                                imageVector = Icons.Filled.FormatListNumbered,
-                                contentDescription = "Numbered List"
-                            )
-                            Spacer(modifier = Modifier.width(width = 4.dp))
-                            Text("Biggest number",
-                                color = Color.White,
-                                modifier = Modifier.padding(top = 2.dp))
-                        }
-                    }
+                    MenuButton(Icons.Filled.FormatListNumbered, "Biggest number") { selectedMenuItem = MenuItem.Numbers }
                     Spacer(modifier = Modifier.width(width = 16.dp))
-
-                    IconButton(onClick = { selectedMenuItem = MenuItem.Vowels }) {
-                        Row() {
-                            Icon(
-                                imageVector = Icons.Filled.Abc,
-                                contentDescription = "Characters"
-                            )
-                            Spacer(modifier = Modifier.width(width = 4.dp))
-                            Text("Characters count",
-                                color = Color.White,
-                                modifier = Modifier.padding(top = 2.dp))
-                        }
-                    }
+                    MenuButton(Icons.Filled.Abc, "Characters count") { selectedMenuItem = MenuItem.Vowels }
                     Spacer(modifier = Modifier.width(width = 16.dp))
-
-
-                    IconButton(onClick = { selectedMenuItem = MenuItem.Palindrome }) {
-                        Row() {
-                            Icon(
-                                imageVector = Icons.Filled.Abc,
-                                contentDescription = "Palindrome"
-                            )
-                            Spacer(modifier = Modifier.width(width = 4.dp))
-                            Text("Palindrome",
-                                color = Color.White,
-                                modifier = Modifier.padding(top = 2.dp))
-                        }
-                    }
-
+                    MenuButton(Icons.Filled.Abc, "Palindrome") { selectedMenuItem = MenuItem.Palindrome }
                     Spacer(modifier = Modifier.width(width = 16.dp))
-
-                    IconButton(onClick = { selectedMenuItem = MenuItem.FrequentString }) {
-                        Row() {
-                            Icon(
-                                imageVector = Icons.Filled.Equalizer,
-                                contentDescription = "Frequency"
-                            )
-                            Spacer(modifier = Modifier.width(width = 4.dp))
-                            Text("Frequency",
-                                color = Color.White,
-                                modifier = Modifier.padding(top = 2.dp))
-                        }
-                    }
-
+                    MenuButton(Icons.Filled.Equalizer, "Frequency") { selectedMenuItem = MenuItem.FrequentString }
                     Spacer(modifier = Modifier.width(width = 16.dp))
-
-                    IconButton(onClick = { selectedMenuItem = MenuItem.countOccurrences }) {
-                        Row() {
-                            Icon(
-                                imageVector = Icons.Filled.Equalizer,
-                                contentDescription = "Frequency"
-                            )
-                            Spacer(modifier = Modifier.width(width = 4.dp))
-                            Text("Needle in Haystack",
-                                color = Color.White,
-                                modifier = Modifier.padding(top = 2.dp))
-                        }
-                    }
+                    MenuButton(Icons.Filled.Equalizer, "Needle in Haystack") { selectedMenuItem = MenuItem.countOccurrences }
                     Spacer(modifier = Modifier.width(width = 16.dp))
                 }
             )
