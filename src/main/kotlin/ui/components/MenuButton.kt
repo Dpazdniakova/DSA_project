@@ -17,8 +17,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 @Composable
 fun MenuButton(icon: ImageVector, label: String,  selected: Boolean, onClick: () -> Unit) {
 
-    val HighlightColor = Color(0xFFFF7043)
-    val textColor = if (selected) HighlightColor else Color.White
+    val highlightColor = Color(0xFFFF7043)
+    val textColor = if (selected) highlightColor else Color.White
 
 
         IconButton(onClick = onClick) {
