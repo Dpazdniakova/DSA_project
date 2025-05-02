@@ -51,7 +51,7 @@ fun isPalindrome(input: String): Boolean {
     val startIndex = if (length % 2 == 0) midpoint else midpoint + 1
 
     for (i in startIndex until length) {
-        val top = stack.removeLast() // acts as pop
+        val top = stack.removeLast()
         if (top != cleaned[i]) {
             return false
         }

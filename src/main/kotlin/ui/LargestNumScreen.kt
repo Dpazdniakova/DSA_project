@@ -5,6 +5,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import ui.components.ErrorPopUp
 import utils.findLargestNumber
 
 @Composable
@@ -51,7 +52,7 @@ fun LargestNumScreen() {
         }
 
         if (error != null) {
-            Text(error!!, color = MaterialTheme.colors.error)
+            ErrorPopUp(message = error!!, onDismiss = { error = null })
         }
     }
 

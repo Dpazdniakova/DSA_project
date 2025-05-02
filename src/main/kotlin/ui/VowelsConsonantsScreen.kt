@@ -11,6 +11,7 @@ import androidx.compose.material.TextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import ui.components.ErrorPopUp
 import utils.countVowelsAndConsonants
 
 @Composable
@@ -57,7 +58,7 @@ fun VowelsConsonantsScreen () {
             Text("Consonants: $consonantCount", style = MaterialTheme.typography.h6)
         }
         if (error != null) {
-            Text(error!!, color = MaterialTheme.colors.error)
+            ErrorPopUp(message = error!!, onDismiss = { error = null })
         }
     }
 }
